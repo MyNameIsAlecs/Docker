@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+    hellodocker:
+        build:
+            context: .
+        image: alex
+        stdin_open: true  #docker run -i
+        tty: true         #docker run -t

@@ -1,0 +1,11 @@
+FROM eclipse-temurin:11 as builder
+COPY      src/ /hello/src
+WORKDIR   /hello
+RUN       javac -d ./build src/Main.java
+WORKDIR   /hello/build
+RUN       jar cfe hellodocker.jar Main Main.class
+
+FROM eclipse-temurin:11
+WORKDIR   /hello/build
+COPY      hello/build    /hola/build
+CMD       java -jar hellodocker.jar
